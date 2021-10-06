@@ -24,6 +24,8 @@ import oracle.adf.view.rich.context.AdfFacesContext;
 import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
+import oracle.jbo.AttributeDef;
+import oracle.jbo.Key;
 import oracle.jbo.ViewCriteria;
 import oracle.jbo.ViewObject;
 //import oracle.jbo.Row;
@@ -52,18 +54,13 @@ public class ExcelUpDown {
     }
     
     Map<Integer,String> excelHeaderMap ; 
-   XSSFWorkbook workbook ; 
+    XSSFWorkbook workbook ; 
     XSSFSheet worksheet;
     
     AppModuleImpl appM = getAppModuleImpl();
     
  
 
-    public Map<Integer, String> getExcelHeaderMap() {
-        
-       return  new HashMap<Integer,String>();
-   
-    }
 
     private AppModuleImpl getAppModuleImpl() {
         DCBindingContainer bindingContainer =
@@ -120,21 +117,17 @@ public class ExcelUpDown {
           
          for (Row excelRow : sheet) {
              
-             System.out.println("===============  excel row   "  + count );
+           //  System.out.println("===============  excel row   "  + count );
                      
              if(   excelRow.getRowNum() ==0 )  {
                  
                  populateHeaderMap(excelRow);
                  
-             }
-                 
-                                         
+             }                                         
              else if( excelRow.getRowNum() > 0 ){
-                 
-                 
-                 
- //                cartonVORow = (ViewRowImpl)CartonVO.createRow();  
- //                insertExcelRowIntoCartonVO(cartonVORow , excelRow );
+                  
+                 cartonVORow = (ViewRowImpl)CartonVO.createRow();  
+               insertExcelRowIntoCartonVO(cartonVORow , excelRow );
                  
                
              }
@@ -176,62 +169,53 @@ public class ExcelUpDown {
         
         TargetCartoon1VORowImpl  cartonVORowImpl = (TargetCartoon1VORowImpl)cartoonVORow;
          int cellNo; 
+         
+         
+      String excelColumnName = null;
+      String voAttributeName = null;
+        AttributeDef[] voAttributes =   cartonVORowImpl.getViewObject().getAttributeDefs();
+      
+      Map<Integer,String>  excelHeaderMap   = this.getExcelHeaderMap();
+      
       
         for (Cell excelCell : excelRow){
             
-            cellNo = excelCell.getColumnIndex();
+
+         cellNo = excelCell.getColumnIndex(); 
+           
+       //  excelColumnName =  excelHeaderMap.get( new Key(new Object[]{cellNo  }   )        );  
+       excelColumnName =  excelHeaderMap.get( cellNo      );  
+            
+            System.out.println("  ------------- cellNo ,  excelColumnName "+  cellNo+  "   "+  excelColumnName);
+            
+            
+            
+            
+            for(AttributeDef voAttribute : voAttributes) {
+                if(  excelColumnName != null &&  excelColumnName.equals(voAttribute.getColumnName()) ) { 
+                    
+                    voAttributeName =  voAttribute.getName() ;                
+                   System.out.println("  ------------- excelColumnName "+ excelColumnName);
+                    System.out.println("  ------------- voAttributeName "+ voAttributeName);
+                    
+                }
+            }
+           System.out.println("  ===================================================================================================== ");
+         
+            
+         //   System.out.println("  cellNo ,  excelColumnName " + cellNo +"  "+ excelColumnName   );
+            
             String cellVal;
             cellVal = formatter.formatCellValue(excelCell);
-            
+           
           //  System.out.println("  ====== excel cell  cellNo ,  cellVal =========  "+  cellNo + "   "+cellVal  );
             
-           switch (cellNo)
-           {
-             case 0:  
                 
-               cartonVORowImpl.setName(cellVal);
-                break;
-            case 1: 
-               cartonVORowImpl.setUpc(cellVal);
-                break;
-            case 2:
-                cartonVORowImpl.setPo(cellVal);
-                break;
-            case 3:
-                cartonVORowImpl.setVcpSsp(cellVal);
-                break;
-            case 4:
-                cartonVORowImpl.setCountryOfOrigin(cellVal);
-                break;
-            case 5:
-                cartonVORowImpl.setDpciItem(cellVal);
-                break;
-            case 6:
-                cartonVORowImpl.setVenStyle(cellVal);
-                break;
-            case 7:
-                cartonVORowImpl.setGmsColor(cellVal);
-                break;
-            case 8:
-                cartonVORowImpl.setGmsQty(cellVal);
-                break;
-               case 9:
-               cartonVORowImpl.setSizes(cellVal);
-                   break;
-               case 10:
-               cartonVORowImpl.setCartonDimensionCm(cellVal);
-                   break;      
-              case 11:
-               cartonVORowImpl.setFileName(cellVal);
-                break;
-               case 12:
-                cartonVORowImpl.setCartonQtyPcs(cellVal);
-                break;
-
-            default:
-                ;
+            cartonVORowImpl.setAttribute(voAttributeName, cellVal);
+       
+          
                
-           }          
+                 
             
         }
          
@@ -273,26 +257,32 @@ public class ExcelUpDown {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
     }
 
-    private void populateHeaderMap(Row excelRow) {
+    private  void populateHeaderMap(Row excelRow) {
         
-     Map<Integer,String> excelHeaderMap = this.getExcelHeaderMap();
+      this.excelHeaderMap =  new HashMap<Integer, String>();
     
-    String cellVal;
-    int cellNo ;
-    DataFormatter formatter = new DataFormatter();
+        String cellVal;
+        int cellNo ;
+        DataFormatter formatter = new DataFormatter();
 
     
       for (Cell excelCell : excelRow){
         cellNo = excelCell.getColumnIndex();
         cellVal = formatter.formatCellValue(excelCell);
           
-          System.out.println(" cell no , cell value " + cellNo + "   "+cellVal);
+       //   System.out.println(" cell no , cell value " + cellNo + "   "+cellVal);
           
           
         excelHeaderMap.put(cellNo , cellVal );
         
          
       }
+      
+      
+      
     }
 
+    public Map<Integer, String> getExcelHeaderMap() {
+        return excelHeaderMap;
+    }
 }
