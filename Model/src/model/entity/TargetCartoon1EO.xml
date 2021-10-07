@@ -7,7 +7,7 @@
   Version="11.1.1.62.29"
   InheritPersonalization="true"
   DBObjectType="table"
-  DBObjectName="TARGET_CARTOON1_TEST"
+  DBObjectName="TARGET_CARTOON1_TEMP"
   AliasName="TargetCartoon1EO"
   BindingStyle="OracleName"
   UseGlueCode="false">
@@ -22,7 +22,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -34,7 +34,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -46,7 +46,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST"
+    TableName="TARGET_CARTOON1_TEMP"
     PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
@@ -59,7 +59,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST"
+    TableName="TARGET_CARTOON1_TEMP"
     PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
@@ -72,7 +72,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -84,7 +84,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST"
+    TableName="TARGET_CARTOON1_TEMP"
     PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
@@ -97,7 +97,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -109,7 +109,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -121,7 +121,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -133,7 +133,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST"
+    TableName="TARGET_CARTOON1_TEMP"
     PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
@@ -146,7 +146,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -158,7 +158,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -169,7 +169,7 @@
     SQLType="TIMESTAMP"
     Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -181,7 +181,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -193,7 +193,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -204,7 +204,7 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
@@ -216,7 +216,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
     </DesignTime>
@@ -228,7 +228,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
@@ -240,7 +240,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="TARGET_CARTOON1_TEST">
+    TableName="TARGET_CARTOON1_TEMP">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>

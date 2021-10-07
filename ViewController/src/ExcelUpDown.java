@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.sql.CallableStatement;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -150,6 +152,11 @@ public class ExcelUpDown {
         
         
        getExcelUploadFile().setValue(null);
+       
+       updateCartonTableWithTempTable();
+       
+       barcodeProcess();
+       
        AdfFacesContext.getCurrentInstance().addPartialTarget(getExcelUploadFile());
         
     }
@@ -284,5 +291,45 @@ public class ExcelUpDown {
 
     public Map<Integer, String> getExcelHeaderMap() {
         return excelHeaderMap;
+    }
+    
+    
+    private void updateCartonTableWithTempTable() {
+            
+            String statement = "BEGIN UPDATE_CARTON_T_WITH_TEMP_T; END;";
+            CallableStatement cs =  appM.getDBTransaction().createCallableStatement(statement, 1);
+          
+           
+            try {
+
+                cs.execute();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                ;
+            }            
+            
+            
+        }
+    
+    
+    
+
+    private void barcodeProcess() {
+        
+        
+            String statement = "BEGIN BARCODE_PROCESS; END;";
+           
+           CallableStatement cs =  appM.getDBTransaction().createCallableStatement(statement, 1);              
+               
+                try {
+
+                  //  cs.execute();
+}
+                catch(Exception e){
+                    e.printStackTrace();
+                    
+                }                                    
+        
     }
 }
