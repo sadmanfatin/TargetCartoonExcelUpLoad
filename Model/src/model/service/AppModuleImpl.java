@@ -1,5 +1,9 @@
 package model.service;
 
+import java.sql.CallableStatement;
+
+import model.view.TargetCartoon1VOImpl;
+
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewObjectImpl;
 // ---------------------------------------------------------------------
@@ -22,4 +26,15 @@ public class AppModuleImpl extends ApplicationModuleImpl {
     public ViewObjectImpl getTargetCartoon1VO1() {
         return (ViewObjectImpl)findViewObject("TargetCartoon1VO1");
     }
+
+    /**
+     * Container's getter for TargetCartoon1TempVO1.
+     * @return TargetCartoon1TempVO1
+     */
+    public ViewObjectImpl getTargetCartoon1TempVO1() {
+        return (ViewObjectImpl)findViewObject("TargetCartoon1TempVO1");
+    }
+    
+    
+ 
 }

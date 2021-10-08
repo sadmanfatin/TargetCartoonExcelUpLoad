@@ -37,7 +37,7 @@
        TargetCartoon1EO.CHKDIGIT, 
        TargetCartoon1EO.BARCODES, 
        TargetCartoon1EO.BARCODE_WITH_CHECK
-FROM TARGET_CARTOON1_TEMP TargetCartoon1EO 
+FROM TARGET_CARTOON1 TargetCartoon1EO 
 order by  TargetCartoon1EO.TDATE desc]]>
   </SQLQuery>
   <EntityUsage

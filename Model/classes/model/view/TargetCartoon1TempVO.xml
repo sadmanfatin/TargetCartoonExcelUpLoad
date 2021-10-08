@@ -3,196 +3,180 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="TargetCartoon1VO"
+  Name="TargetCartoon1TempVO"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
+  SelectList="TargetCartoon1TempEO.NAME, 
+       TargetCartoon1TempEO.UPC, 
+       TargetCartoon1TempEO.PO, 
+       TargetCartoon1TempEO.VCP_SSP, 
+       TargetCartoon1TempEO.COUNTRY_OF_ORIGIN, 
+       TargetCartoon1TempEO.DPCI_ITEM, 
+       TargetCartoon1TempEO.VEN_STYLE, 
+       TargetCartoon1TempEO.GMS_COLOR, 
+       TargetCartoon1TempEO.GMS_QTY, 
+       TargetCartoon1TempEO.SIZES, 
+       TargetCartoon1TempEO.CARTON_DIMENSION_CM, 
+       TargetCartoon1TempEO.CARTON_QTY_PCS, 
+       TargetCartoon1TempEO.TDATE, 
+       TargetCartoon1TempEO.FILE_NAME, 
+       TargetCartoon1TempEO.ENCODED_BARCODE, 
+       TargetCartoon1TempEO.STATUS, 
+       TargetCartoon1TempEO.CHKDIGIT, 
+       TargetCartoon1TempEO.BARCODES, 
+       TargetCartoon1TempEO.BARCODE_WITH_CHECK, 
+       TargetCartoon1TempEO.CREATION_DATE, 
+       TargetCartoon1TempEO.LAST_UPDATED_DATE, 
+       TargetCartoon1TempEO.ROWID"
+  FromList="TARGET_CARTOON1_TEMP TargetCartoon1TempEO"
   BindingStyle="OracleName"
-  CustomQuery="true"
+  CustomQuery="false"
   PageIterMode="Full"
   UseGlueCode="false"
-  RowClass="model.view.TargetCartoon1VORowImpl"
-  ComponentClass="model.view.TargetCartoon1VOImpl">
+  RowClass="model.view.TargetCartoon1TempVORowImpl"
+  ComponentClass="model.view.TargetCartoon1TempVOImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
-    <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
-  <SQLQuery>
-    <![CDATA[SELECT TargetCartoon1EO.NAME, 
-       TargetCartoon1EO.UPC, 
-       TargetCartoon1EO.PO, 
-       TargetCartoon1EO.VCP_SSP, 
-       TargetCartoon1EO.COUNTRY_OF_ORIGIN, 
-       TargetCartoon1EO.DPCI_ITEM, 
-       TargetCartoon1EO.VEN_STYLE, 
-       TargetCartoon1EO.GMS_COLOR, 
-       TargetCartoon1EO.GMS_QTY, 
-       TargetCartoon1EO.SIZES, 
-       TargetCartoon1EO.CARTON_DIMENSION_CM, 
-       TargetCartoon1EO.CARTON_QTY_PCS, 
-       TargetCartoon1EO.TDATE, 
-       TargetCartoon1EO.FILE_NAME, 
-       TargetCartoon1EO.ENCODED_BARCODE, 
-       TargetCartoon1EO.STATUS, 
-       TargetCartoon1EO.CHKDIGIT, 
-       TargetCartoon1EO.BARCODES, 
-       TargetCartoon1EO.BARCODE_WITH_CHECK
-FROM TARGET_CARTOON1 TargetCartoon1EO 
-order by  TargetCartoon1EO.TDATE desc]]>
-  </SQLQuery>
   <EntityUsage
-    Name="TargetCartoon1EO"
-    Entity="model.entity.TargetCartoon1EO"/>
+    Name="TargetCartoon1TempEO"
+    Entity="model.entity.TargetCartoon1TempEO"/>
   <ViewAttribute
     Name="Name"
     PrecisionRule="true"
     EntityAttrName="Name"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="NAME"/>
   <ViewAttribute
     Name="Upc"
     PrecisionRule="true"
     EntityAttrName="Upc"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="UPC"/>
   <ViewAttribute
     Name="Po"
-    IsNotNull="true"
+    IsUnique="true"
     PrecisionRule="true"
     EntityAttrName="Po"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="PO"/>
   <ViewAttribute
     Name="VcpSsp"
-    IsNotNull="true"
+    IsUnique="true"
     PrecisionRule="true"
     EntityAttrName="VcpSsp"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="VCP_SSP"/>
   <ViewAttribute
     Name="CountryOfOrigin"
     PrecisionRule="true"
     EntityAttrName="CountryOfOrigin"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="COUNTRY_OF_ORIGIN"/>
   <ViewAttribute
     Name="DpciItem"
-    IsNotNull="true"
+    IsUnique="true"
     PrecisionRule="true"
     EntityAttrName="DpciItem"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="DPCI_ITEM"/>
   <ViewAttribute
     Name="VenStyle"
     PrecisionRule="true"
     EntityAttrName="VenStyle"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="VEN_STYLE"/>
   <ViewAttribute
     Name="GmsColor"
     PrecisionRule="true"
     EntityAttrName="GmsColor"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="GMS_COLOR"/>
   <ViewAttribute
     Name="GmsQty"
     PrecisionRule="true"
     EntityAttrName="GmsQty"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="GMS_QTY"/>
   <ViewAttribute
     Name="Sizes"
+    IsUnique="true"
     PrecisionRule="true"
     EntityAttrName="Sizes"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="SIZES"/>
   <ViewAttribute
     Name="CartonDimensionCm"
     PrecisionRule="true"
     EntityAttrName="CartonDimensionCm"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="CARTON_DIMENSION_CM"/>
   <ViewAttribute
     Name="CartonQtyPcs"
     PrecisionRule="true"
     EntityAttrName="CartonQtyPcs"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="CARTON_QTY_PCS"/>
   <ViewAttribute
     Name="Tdate"
     PrecisionRule="true"
     EntityAttrName="Tdate"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="TDATE"/>
   <ViewAttribute
     Name="FileName"
     PrecisionRule="true"
     EntityAttrName="FileName"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="FILE_NAME"/>
   <ViewAttribute
     Name="EncodedBarcode"
     PrecisionRule="true"
     EntityAttrName="EncodedBarcode"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="ENCODED_BARCODE"/>
   <ViewAttribute
     Name="Status"
     PrecisionRule="true"
     EntityAttrName="Status"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="STATUS"/>
   <ViewAttribute
     Name="Chkdigit"
     PrecisionRule="true"
     EntityAttrName="Chkdigit"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="CHKDIGIT"/>
   <ViewAttribute
     Name="Barcodes"
     PrecisionRule="true"
     EntityAttrName="Barcodes"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="BARCODES"/>
   <ViewAttribute
     Name="BarcodeWithCheck"
     PrecisionRule="true"
     EntityAttrName="BarcodeWithCheck"
-    EntityUsage="TargetCartoon1EO"
+    EntityUsage="TargetCartoon1TempEO"
     AliasName="BARCODE_WITH_CHECK"/>
-  <ViewCriteria
-    Name="TargetCartoon1VOCriteria"
-    ViewObjectName="model.view.TargetCartoon1VO"
-    Conjunction="AND">
-    <Properties>
-      <CustomProperties>
-        <Property
-          Name="displayOperators"
-          Value="InAdvancedMode"/>
-        <Property
-          Name="autoExecute"
-          Value="false"/>
-        <Property
-          Name="allowConjunctionOverride"
-          Value="true"/>
-        <Property
-          Name="showInList"
-          Value="true"/>
-        <Property
-          Name="mode"
-          Value="Basic"/>
-      </CustomProperties>
-    </Properties>
-    <ViewCriteriaRow
-      Name="vcrow0"
-      UpperColumns="1">
-      <ViewCriteriaItem
-        Name="FileName"
-        ViewAttribute="FileName"
-        Operator="="
-        Conjunction="AND"
-        Required="Optional"
-        GenerateIsNullClauseForBindVars="false"/>
-    </ViewCriteriaRow>
-  </ViewCriteria>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="TargetCartoon1TempEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="TargetCartoon1TempEO"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="RowID"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="RowID"
+    EntityUsage="TargetCartoon1TempEO"
+    AliasName="ROWID"/>
 </ViewObject>

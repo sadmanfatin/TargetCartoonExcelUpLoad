@@ -21,4 +21,7 @@
       Name="TargetCartoon1VOCriteria"
       FullName="model.view.TargetCartoon1VO.TargetCartoon1VOCriteria"/>
   </ViewUsage>
+  <ViewUsage
+    Name="TargetCartoon1TempVO1"
+    ViewObjectName="model.view.TargetCartoon1TempVO"/>
 </AppModule>

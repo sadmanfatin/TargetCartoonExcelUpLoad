@@ -81,7 +81,7 @@ public class ExcelUpDown {
     public void uploadExcelFile(ValueChangeEvent valueChangeEvent) throws IOException,
                                                                           InvalidFormatException {
         // Add event code here...
-        System.out.println("    --------------------- =-=-=-=-  1"  );
+      //  System.out.println("    --------------------- =-=-=-=-  1"  );
         UploadedFile file;
                     file = (UploadedFile)valueChangeEvent.getNewValue();
        
@@ -112,7 +112,7 @@ public class ExcelUpDown {
        
        Sheet sheet = workbook.getSheetAt(0);
                      
-        ViewObject CartonVO  = appM.getTargetCartoon1VO1();
+        ViewObject CartonVO  = appM.getTargetCartoon1TempVO1();
         ViewRowImpl cartonVORow;
         int count = 0;
           
@@ -129,13 +129,10 @@ public class ExcelUpDown {
              else if( excelRow.getRowNum() > 0 ){
                   
                  cartonVORow = (ViewRowImpl)CartonVO.createRow();  
-               insertExcelRowIntoCartonVO(cartonVORow , excelRow );
-                 
+               insertExcelRowIntoCartonVO(cartonVORow , excelRow );                
                
              }
-             
-             
-
+                          
               count ++;
         }
          
@@ -143,21 +140,27 @@ public class ExcelUpDown {
         //  String fileName =sheet.getRow(1).getCell(11).getStringCellValue();     
         // fileName = fileName.substring(0, fileName.indexOf("."));       
         //  System.out.println("file name = "+fileName );
-       
+         
          showMessage("File Uploaded Successfully !", "info");
         
          this.executeOperation("Commit");
         
         appM.getTargetCartoon1VO1().executeQuery();
+        appM.getTargetCartoon1TempVO1().executeQuery();
+  
         
-        
-       getExcelUploadFile().setValue(null);
        
-       updateCartonTableWithTempTable();
        
-       barcodeProcess();
+        updateCartonTableWithTempTable();   // update
+             
        
-       AdfFacesContext.getCurrentInstance().addPartialTarget(getExcelUploadFile());
+        barcodeProcess();
+       
+        appM.getTargetCartoon1VO1().executeQuery();
+        appM.getTargetCartoon1TempVO1().executeQuery();
+       
+        getExcelUploadFile().setValue(null);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(getExcelUploadFile());
         
     }
 
@@ -174,7 +177,7 @@ public class ExcelUpDown {
         DataFormatter formatter = new DataFormatter();
         
         
-        TargetCartoon1VORowImpl  cartonVORowImpl = (TargetCartoon1VORowImpl)cartoonVORow;
+        TargetCartoon1TempVORowImpl  cartonVORowImpl = (TargetCartoon1TempVORowImpl)cartoonVORow;
          int cellNo; 
          
          
@@ -190,27 +193,28 @@ public class ExcelUpDown {
 
          cellNo = excelCell.getColumnIndex(); 
            
-       //  excelColumnName =  excelHeaderMap.get( new Key(new Object[]{cellNo  }   )        );  
-       excelColumnName =  excelHeaderMap.get( cellNo      );  
+ 
+        // find the excel column header name for the cell number of the cell  
+        excelColumnName =  excelHeaderMap.get( cellNo      );  
             
-            System.out.println("  ------------- cellNo ,  excelColumnName "+  cellNo+  "   "+  excelColumnName);
-            
-            
-            
+          //  System.out.println("  ------------- cellNo ,  excelColumnName "+  cellNo+  "   "+  excelColumnName);
             
             for(AttributeDef voAttribute : voAttributes) {
+                
+                
+                // find the vo attribute name for the excel column name 
                 if(  excelColumnName != null &&  excelColumnName.equals(voAttribute.getColumnName()) ) { 
                     
                     voAttributeName =  voAttribute.getName() ;                
-                   System.out.println("  ------------- excelColumnName "+ excelColumnName);
-                    System.out.println("  ------------- voAttributeName "+ voAttributeName);
+                    //  System.out.println("  ------------- excelColumnName "+ excelColumnName);
+                    //    System.out.println("  ------------- voAttributeName "+ voAttributeName);
                     
                 }
             }
-           System.out.println("  ===================================================================================================== ");
+            //   System.out.println("  ===================================================================================================== ");
          
             
-         //   System.out.println("  cellNo ,  excelColumnName " + cellNo +"  "+ excelColumnName   );
+            //   System.out.println("  cellNo ,  excelColumnName " + cellNo +"  "+ excelColumnName   );
             
             String cellVal;
             cellVal = formatter.formatCellValue(excelCell);
@@ -219,19 +223,12 @@ public class ExcelUpDown {
             
                 
             cartonVORowImpl.setAttribute(voAttributeName, cellVal);
-       
-          
-               
-                 
-            
+                                   
         }
          
     }
        
-       
-       
-       
-    
+          
     public  void showMessage(String messege , String severity ) {
         
         
@@ -295,10 +292,12 @@ public class ExcelUpDown {
     
     
     private void updateCartonTableWithTempTable() {
+        
             
             String statement = "BEGIN UPDATE_CARTON_T_WITH_TEMP_T; END;";
             CallableStatement cs =  appM.getDBTransaction().createCallableStatement(statement, 1);
-          
+           
+          // System.out.println();
            
             try {
 
@@ -308,7 +307,7 @@ public class ExcelUpDown {
                 e.printStackTrace();
                 ;
             }            
-            
+           
             
         }
     
@@ -324,12 +323,13 @@ public class ExcelUpDown {
                
                 try {
 
-                  //  cs.execute();
-}
+                 cs.execute();
+                }
                 catch(Exception e){
                     e.printStackTrace();
                     
                 }                                    
         
+
     }
 }
